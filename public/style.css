@@ -9,9 +9,9 @@ html {
 
 
 body {
-  font-family: arial, san-serif;
-  background-color: cornsilk;
-  color: royalblue
+  font-family: Georgia, san-serif;
+  background-color: darkslategrey;
+  color: olive;
 }
 
 h1,
@@ -19,7 +19,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: cursive;
+  font-family: Georgia;
 }
 
 th,
@@ -31,17 +31,17 @@ td {
 
 
 #header {
-  border: 1px solid royalblue;
+  border: 1px solid ivory;
   padding: 20px;
 }
 
 #input {
-  border: 1px solid royalblue;
+  border: 1px solid olive;
   padding: 20px;
 }
 
 #output {
-  border: 1px solid royalblue;
+  border: 1px solid ivory;
   padding: 20px;
   overflow: scroll;
   background-color: black;

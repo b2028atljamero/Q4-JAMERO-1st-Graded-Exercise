@@ -4,16 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width", initial-scale=1>
-  <meta name="author" content="">
-  <meta name="description" content=" ">
-  <meta name="keywords" content="">
-  <title>Canseco - CS 3 </title>
+  <meta name="author" content="Asha Jamero">
+  <meta name="description" content="input form for birthday guests">
+  <meta name="keywords" content="guests,invitees,birthday,celebrant">
+  <title>Jamero - CS 3 </title>
   <!-- using the w3.css framework to show how predefined css classes can be used inside an html document.  -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- local css property definitions to further enhance the page -->
   <link href="style.css" rel="stylesheet" type="text/css" />
-
-  <link rel="icon" type="image/x-icon" href="">
 </head>
 
 <!--- classes that starts with w3 are defined inside w3.css -->
@@ -29,89 +27,76 @@
 
 
   <header class="w3-container" id="header" > 
-    <h1>Roy Canseco - III-K - Jan 2025</h1>
+    <h1>Asha Jamero - III-Na - May 2025</h1>
     <h2> Birthday </h2>
   </header>
 
   <section class="w3-container" id="input"> 
     <h2>Input</h2>
-    <!-- define the form and prevents its default action after it is submitted then call three functions-->
-    <form  id="input_form" method="post" action="/happy" 
-        onsubmit="return confirm('Sure to Submit')"
-        onreset="return confirm('Sure to Submit')"
-    />
-
+    <form id="input_form" method="post" action="/happy" 
+      onsubmit="return confirm('Sure to submit?')"
+      onreset="return confirm('Reset the form?')">
       <div class="w3-row">
         <div class="w3-third w3-panel w3-card w3-margin">
-          <label for="name">Your nickname:</label></br>
-          <input class="w3-input" type="text" id="name" name="name"><br>
+          <label for="name">Your nickname:</label><br>
+          <input class="w3-input" type="text" id="name" name="name" required><br>
 
           <label for="gender">Gender: </label><br>
-          <input class="w3-radio"  type="radio" id="male" name="gender" value="male">
+          <input class="w3-radio" type="radio" id="male" name="gender" value="male" required>
           <label for="male">Male</label> <br>
-          <input class="w3-radio w3-margin-bottom"  type="radio" id="female" name="gender" value="female">
+          <input class="w3-radio w3-margin-bottom" type="radio" id="female" name="gender" value="female">
           <label for="female">Female</label>
         </div>
-      
-      <div class="w3-panel w3-third w3-card w3-margin w3-padding"
-      <label for="number"> Number of close family and friends: </label><br>
-      <select class="w3-select w3-border" id="number" name="number" onchange="generateGuestFields()">
-        <option value="">--Please choose a number--</option>
-        <!-- sample use of script to generate choices for a drop-down menu that shows numbers from 1 to 16 -->
-        <script>
-          for(let i=1; i<=16; i++ ){
-            document.write(`<option value="${i}"> ${i} </option>`);
-          }
-        </script>
-      </select> <br>
-
-      <!-- to submit a form and formatted again using w3.css classess -->
-      <!-- clicking on the submit button activates the onsubmit event handler attached to the form tag -->
-      <div id="guests">  </div>
-        <input class="w3-button w3-black w3-margin" type="submit" value="Submit">
-         <input class="w3-button w3-black w3-margin" type="reset" value="Submit">
+        <div class="w3-third w3-panel w3-card w3-margin">
+          <label for="number">Number of close family and friends:</label><br>
+          <select class="w3-select w3-border" id="number" name="number" onchange="generateGuestFields()" required>
+            <option value="">--Please choose a number--</option>
+            <script>
+              for(let i=1; i<=16; i++ ){
+                document.write(`<option value="${i}"> ${i} </option>`);
+              }
+            </script>
+          </select> <br>
+          <div id="guests"></div>
+          <div id="buttons">
+            <input class="w3-button w3-black w3-margin" type="submit" value="Submit">
+            <input class="w3-button w3-black w3-margin" type="reset" value="Reset">
+          </div>
+        </div>
       </div>
-      </div>
-      
-    </form> 
+    </form>
   </section>
 
   <footer class="w3-container ">
-    <p> &copy; 2024 CS3 Teachers </p>
+    <p> &copy; 2025, A. Jamero </p>
+    <p> https://www.w3schools.com/jsref/jsref_replace.asp </p>
   </footer>
 
   <script>
     function generateGuestFields(){
-    const num = document.getElementById('number').value; // gets the numer of guests
-    const container = document.getElementById('guests');
-    container.innerHTML = 'Enter the name(s) of your invitees: <br>';
-
-    for (let i=0; i<num; i++){
-      // steps to create the individual input field 
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'name' + (i+1); // creates the assigned name to the field
-      input.className = 'w3-input w3-half  ' // assign a css class
-      container.appendChild(input); // include it in the guests div
-
-      // steps to create the individual checkbox for Going? per guest 
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.id = 'checkbox' + (i+1);  // creates the assigned id to the field
-      checkbox.name = 'checkbox' + (i+1);
-      // applies a css class and include it in the guests div
-      checkbox.className = 'w3-check w3-margin-left w3-margin-right w3-margin-bottom'
-      container.appendChild(checkbox);
-
-      const label = document.createElement('label');
-      label.htmlFor = checkbox.id;
-      label.textContent = "Going?";
-      container.appendChild(label);
-      // applies a newline on the browser after each guests Name and Going? checkbox.
-      container.appendChild(document.createElement('br')); 
-
+      const num = document.getElementById('number').value;
+      const container = document.getElementById('guests');
+      container.innerHTML = 'Enter the name(s) of your invitees: <br>';
+      for (let i=0; i < num; i++) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'name' + (i+1);
+        input.className = 'w3-input w3-half';
+        input.placeholder = 'Guest ' + (i+1);
+        container.appendChild(input);
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'checkbox' + (i+1);
+        checkbox.name = 'checkbox' + (i+1);
+        checkbox.className = 'w3-check w3-margin-left w3-margin-right w3-margin-bottom';
+        container.appendChild(checkbox);
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = "Going?";
+        container.appendChild(label);
+        container.appendChild(document.createElement('br'));
+      }
     }
-  }
   </script>
 </body>
 
